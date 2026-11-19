@@ -42,3 +42,11 @@ def translate_to(text: str, target_language_code: str) -> str:
     return ' '.join(translated_texts)
 
 
+"""
+print(detect_language("雲端系統及數據中心管理高級文憑課程編號 IT114115"))
+print(detect_language("Higher Diploma in Cloud and Data Centre Administration Programme code IT114115"))
+print(detect_language("ワンピース"))
+print(translate_to("雲端系統及數據中心管理高級文憑課程編號 IT114115", "en"))
+print(translate_to("Higher Diploma in Cloud and Data Centre Administration Programme code IT114115","ja"))
+print(translate_to("ワンピース","en"))
+"""
