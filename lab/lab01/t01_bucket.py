@@ -13,10 +13,20 @@ credentials = service_account.Credentials.from_service_account_file(
 
 
 def create_static_website_cloud_storage_bucket_if_not_exit(bucket_name: str):       
-    pass
+    storage_client = storage.Client(credentials=credentials)
+    try:
+        bucket = storage_client.get_bucket(bucket_name)
+    except exceptions.NotFound:
+        bucket = storage_client.create_bucket(bucket_name)
+    policy = bucket.get_iam_policy(requested_policy_version=3)
+    policy.bindings.append(
+        {"role": "roles/storage.objectViewer", "members": ["allUsers"]})
+    bucket.set_iam_policy(policy)
+    bucket.configure_website("index.html", "404.html")
+    bucket.patch()
 
 def upload_text_to_bucket(bucket_name: str, path_name: str, content: str, content_type: str = "text/html"):
-    pass
+    
 
 def upload_file_to_bucket(bucket_name: str, path_name: str, source_file_name: str, content_type: str = "image/jpeg"):
     storage_client = storage.Client(credentials=credentials)
