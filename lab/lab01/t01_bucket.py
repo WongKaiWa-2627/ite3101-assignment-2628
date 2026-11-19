@@ -71,4 +71,4 @@ def upload_html_file_to_bucket(bucket_name: str, path: str, repeat: int):
 
 
 def delete_text_html_to_bucket(bucket_name: str, path: str, repeat: int):
-    pass
+    
