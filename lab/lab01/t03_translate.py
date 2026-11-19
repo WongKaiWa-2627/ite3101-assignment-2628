@@ -40,3 +40,5 @@ def translate_to(text: str, target_language_code: str) -> str:
     translated_texts = [
         translation.translated_text for translation in response.translations]
     return ' '.join(translated_texts)
+
+
