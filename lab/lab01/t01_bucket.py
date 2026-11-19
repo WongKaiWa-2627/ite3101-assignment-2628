@@ -26,7 +26,11 @@ def create_static_website_cloud_storage_bucket_if_not_exit(bucket_name: str):
     bucket.patch()
 
 def upload_text_to_bucket(bucket_name: str, path_name: str, content: str, content_type: str = "text/html"):
-    
+    storage_client = storage.Client(credentials=credentials)
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(path_name)
+    blob.upload_from_string(content, content_type)
+
 
 def upload_file_to_bucket(bucket_name: str, path_name: str, source_file_name: str, content_type: str = "image/jpeg"):
     storage_client = storage.Client(credentials=credentials)
