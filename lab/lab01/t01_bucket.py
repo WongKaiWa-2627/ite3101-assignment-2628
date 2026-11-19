@@ -25,7 +25,32 @@ def upload_file_to_bucket(bucket_name: str, path_name: str, source_file_name: st
     blob.upload_from_filename(source_file_name, content_type=content_type)
 
 def upload_index_and_404_pages(bucket_name: str):
-    
+    index = '''
+<!DOCTYPE html>
+<html>
+<head>
+<title>Index</title>
+</head>
+<body>
+<h1>Index Page</h1>
+</body>
+</html>     
+'''
+
+    page404 = '''
+<!DOCTYPE html>
+<html>
+<head>
+<title>Not Found</title>
+</head>
+<body>
+<h1>Not Found</h1>
+</body>
+</html>     
+'''
+    upload_text_to_bucket(bucket_name, "index.html", index)
+    upload_text_to_bucket(bucket_name, "404.html", page404)
+
 
 
 def upload_html_file_to_bucket(bucket_name: str, path: str, repeat: int):
