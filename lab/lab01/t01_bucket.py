@@ -25,7 +25,7 @@ def upload_file_to_bucket(bucket_name: str, path_name: str, source_file_name: st
     blob.upload_from_filename(source_file_name, content_type=content_type)
 
 def upload_index_and_404_pages(bucket_name: str):
-    pass
+    
 
 
 def upload_html_file_to_bucket(bucket_name: str, path: str, repeat: int):
