@@ -52,7 +52,22 @@ def upload_index_and_404_pages(bucket_name: str):
     upload_text_to_bucket(bucket_name, "404.html", page404)
 
 def upload_html_file_to_bucket(bucket_name: str, path: str, repeat: int):
-    
+    for i in range(repeat):
+        file_path_name = os.path.join(path, f'{i}.html')
+        content = f'''
+<!DOCTYPE html>
+<html>
+<head>
+<title>Index</title>
+</head>
+<body>
+<h1>{i}</h1>
+</body>
+</html>     
+'''
+        upload_text_to_bucket(bucket_name, file_path_name, content)
+
+
 
 
 def delete_text_html_to_bucket(bucket_name: str, path: str, repeat: int):
