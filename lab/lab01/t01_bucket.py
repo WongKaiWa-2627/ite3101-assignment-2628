@@ -88,7 +88,7 @@ def delete_text_html_to_bucket(bucket_name: str, path: str, repeat: int):
      storage_client = storage.Client(credentials=credentials)
     bucket = storage_client.bucket(bucket_name)
 
-    for i in range(repeat):
+for i in range(repeat):
         file_path_name = os.path.join(path, f'{i}.html')
         blob = bucket.blob(file_path_name)
         if blob.exists():
